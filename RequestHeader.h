@@ -6,40 +6,42 @@
 //http://kengine.sourceforge.net/tutorial/g/stdmap-eng.htm
 #include <map>
 
-//std::string
+//string
 #include <string>
 
-typedef std::map< std::string , std::string> Map;
+using namespace std;
+
+typedef map< string , string> Map;
 
 class RequestHeader
 {
 	public:
 
 		/// Para esta implementação o método pode ser GET ou POST
-		std::string method;
+		string method;
 
 		///
-		std::string requestURI;
+		string requestURI;
 
 		/// Aonde serão guardados os parâmetros do request através de uma relação chave-valor(parâmetro-valor)
 		Map headerFields;
 
 		///
-		std::string messageBody;
+		string messageBody;
 
 		/// Construtor
-		RequestHeader(std::string method, std::string requestURI)
+		RequestHeader(string method, string requestURI)
 		{
 			this->requestURI = requestURI;
 			this->method =  method;
 		}
 
-		void insert(std::string key, std::string value)
+		void insert(string key, string value)
 		{
 			headerFields.insert(key, value);
 		}
 
-		void getMessageBody(std::string messageBody)
+		void getMessageBody(string messageBody)
 		{
 			this->messageBody = messageBody;
 		}

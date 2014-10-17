@@ -8,6 +8,7 @@
 
 #include<string>
 
+using namespace std;
 /**
  * \class ParserHTTP
  * Classe responsável pela interpretação do cabeçalho do HTTP Request
@@ -28,9 +29,9 @@ class ParserHTTP
 		 * Método que realiza a interpretação do cabeçalho do HTTP Request
 		 * \param header Texto contendo o cabeçalho do HTTP Request
 		 */
-		void execute(std::string header)
+		void execute(string header)
 		{
-			RequestHeader* requesterHeader = new RequestHeader();
+
 
 			/*
 			Primeira linha:
@@ -46,31 +47,25 @@ class ParserHTTP
 				Request-URI = Request-URI    = "*" | absoluteURI | abs_path | authority
 
 				HTTP-Version = No nosso caso HTTP/1.1
-			 */
-			requestLine(requesterHeader, header);
 
-		}
+			*/
 
-		/**
-		 *  \param header Texto contendo o cabeçalho do HTTP Request
-		 *  \return huehueehufhrur
-		 */
-		int requestLine(RequestHeader* requesterHeader, std::string header)
-		{
 			int i = 0;
 
-			std::string aux;
-
-			int j;
-			//pegando o campo method
-			for(j = 0; header[i] != ' '; i++, j++)
+			while(true)
 			{
-				aux[j] = header[i];
+				if(header[i] == '\0' || i == header.max_size())
+				{
+					break;
+				}
+
 			}
-			aux[j] = '\0';
 
-			requesterHeader->insert("method", aux);
+			string method;
 
-			return i;
+			string requestURI;
+			RequestHeader* requesterHeader = new RequestHeader(method, requestURI);
+
+
 		}
 };
